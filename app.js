@@ -62,7 +62,7 @@ app.set('view engine', 'ejs')
 app.use('/admin', adminRoutes)
 
 // index route
-app.get('/', (req, res) => {
+app.get('frankschoolmanagementsystem.herokuapp.com', (req, res) => {
     res.render('index')
 })
 
