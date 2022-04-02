@@ -1,0 +1,78 @@
+  <nav class="main-menu"style="z-index: 9999;">
+
+    <div class="container text-center mb-2 mt-5">
+      <i class="fas fa-user-circle" style="font-size: 2rem; color: white;"></i><br />
+      <span style="font-size: 1rem; color: white;">Name</span>
+    </div>
+    
+         
+<ul>
+
+  <% if(localStorage.getItem("adminData") !== null ) { %>
+    <%= console.log("No Item In") %> 
+
+    <li>                          
+    <a href="/">
+      <i class="fa fa-home fa-lg"></i>
+      <span class="nav-text">Home</span>
+    </a>
+  </li>
+      
+  <li>                        
+    <a href="/admin/adminLogin">
+      <i class="fa fa-user fa-lg"></i>
+      <span class="nav-text">Login</span>
+    </a>
+  </li>
+
+    <li>                        
+      <a href="/about">
+        <i class="fa fa-info fa-lg"></i>
+        <span class="nav-text">About</span>
+      </a>
+    </li>
+  
+     <li>                     
+      <a href="#">
+        <i class="fa fa-question-circle fa-lg"></i>
+        <span class="nav-text">Help</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="#">
+         <i class="fa fa-blog fa-lg"></i>
+         <span class="nav-text">BLOG</span>
+       </a>
+    </li>  
+
+      <% } else { %>
+        
+        <li>                        
+          <a href="/admin/logout">
+            <i class="fa fa-sign-out-alt fa-lg"></i>
+            <span class="nav-text">Logout</span>
+          </a>
+        </li>
+
+        <%= console.log("Item In") %> 
+        <li>                        
+          <a href="#">
+            <i class="fa fa-cog fa-lg"></i>
+            <span class="nav-text">Account Settings</span>
+          </a>
+      </li>
+
+<% } %> 
+
+</ul>
+   
+     
+   
+       
+<!--      
+<ul class="logout">
+   
+</ul> -->
+
+</nav>
