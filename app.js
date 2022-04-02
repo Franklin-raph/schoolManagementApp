@@ -9,23 +9,13 @@ const methodOveride =   require('method-override')
 const app =             express()
 const bp =              require('body-parser')
 const dotenv =          require('dotenv').config()
+const path =            require('path')
 
 // require the passport config file
 require('./config/passport')(passport)
 
-// Port declaration
-const port = process.env.PORT || 4000
-
-mongoose.connect(process.env.MONGO_URI)
-    .then(() =>{
-    // App listening at port 5000
-    app.listen(port, () =>{
-    console.log(`Server is running on port ${port} \nMongo Db is connected`)
-        })
-    }).catch( err => `An error occured while connection go Mongo Db`)
-
 // middle-wares
-app.use(express.static('public'))
+
 app.use(morgan('tiny'))
 app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
@@ -62,12 +52,37 @@ app.set('view engine', 'ejs')
 app.use('/admin', adminRoutes)
 
 // index route
-app.get('frankschoolmanagementsystem.herokuapp.com/', (req, res) => {
-    res.render('index')
-})
+// app.get('frankschoolmanagementsystem.herokuapp.com/', (req, res) => {
+//     res.render('index')
+// })
 
 // about route
 app.get('/about', (req, res) => {
     res.render('about')
 })
+
+
+
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('public'))
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'views', 'index.ejs'))
+    })
+}
+
+
+
+
+// Port declaration
+const port = process.env.PORT || 4000
+
+mongoose.connect(process.env.MONGO_URI)
+    .then(() =>{
+    // App listening at port 5000
+    app.listen(port, () =>{
+    console.log(`Server is running on port ${port} \nMongo Db is connected`)
+        })
+    }).catch( err => `An error occured while connection go Mongo Db`)
+
 
