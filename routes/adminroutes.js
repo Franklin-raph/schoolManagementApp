@@ -9,6 +9,7 @@ const passport = require('passport')
 const LocalStorage = require('node-localstorage').LocalStorage
 localStorage = new LocalStorage('./scratch')
 const {ensureAuthenticated} = require('../helpers/auth')
+const dotenv =          require('dotenv').config()
 
 
 router.get('/adminLogin', (req, res) => {
@@ -130,17 +131,18 @@ router.get('/adminOTP', (req, res) => {
   const generatedCode = Math.floor(100000 + Math.random() * 900000);
   store.set('digitCode',generatedCode)
 
+  console.log(process.env.TEST_GMAIL_PASSWORD)
   // Code for sending email
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'franklinchinedu61@gmail.com',
-          pass: 'franklinchinedu@7'
+          user: process.env.TEST_GMAIL,
+          pass: process.env.TEST_GMAIL_PASSWORD
         }
       });
       
       const mailOptions = {
-        from: 'franklinchinedu61@gmail.com',
+        from: process.env.TEST_GMAIL,
         to: 'igboekwulusifranklin@gmail.com',
         subject: 'Sending Email From Express App',
         html: `<h1>Your code is: <br />${generatedCode}</h1>`,

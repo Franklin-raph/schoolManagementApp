@@ -14,7 +14,7 @@ const dotenv =          require('dotenv').config()
 require('./config/passport')(passport)
 
 // Port declaration
-const port = process.env.PORT
+const port = process.env.PORT || 4000
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() =>{
