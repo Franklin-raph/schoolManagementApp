@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app",
     "dev": "nodemon app.js",
-    "heroku-postbuild": "NPM _CONFIG_PRODUCTION=false npm run build"
+    "heroku-postbuild": "npm run build"
   },
   "author": "Frank_dev",
   "license": "ISC",
