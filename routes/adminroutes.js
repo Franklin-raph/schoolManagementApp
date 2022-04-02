@@ -131,29 +131,29 @@ router.get('/adminOTP', (req, res) => {
   store.set('digitCode',generatedCode)
 
   // Code for sending email
-    // const transporter = nodemailer.createTransport({
-    //     service: 'hotmail',
-    //     auth: {
-    //       user: 'igboekwulusifranklin1@outlook.com',
-    //       pass: 'emmaofmcap@7'
-    //     }
-    //   });
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'frankTestGmail@gmail.com',
+          pass: process.env.TEST_GMAIL_PASSWORD
+        }
+      });
       
-    //   const mailOptions = {
-    //     from: 'igboekwulusifranklin1@outlook.com',
-    //     to: 'igboekwulusifranklin@gmail.com',
-    //     subject: 'Sending Email using Node.js',
-    //     html: `<h1>Your code is: <br />${generatedCode}</h1>`,
-    //   };
+      const mailOptions = {
+        from: 'frankTestGmail@gmail.com',
+        to: 'igboekwulusifranklin@gmail.com',
+        subject: 'Sending Email From Express App',
+        html: `<h1>Your code is: <br />${generatedCode}</h1>`,
+      };
       
-    //   transporter.sendMail(mailOptions, (error, info)=>{
-    //     if (error) {
-    //       console.log(error + "Error here");
-    //     } else {
-    //       console.log('Email sent: ' + info.response);
-    //       console.log(info)
-    //     }
-    //   });
+      transporter.sendMail(mailOptions, (error, info)=>{
+        if (error) {
+          console.log(error + "Error here");
+        } else {
+          console.log('Email sent: ' + info.response);
+          console.log(info)
+        }
+      });
       res.render('admin/adminOTP', { generatedCode: generatedCode })
 })
 
