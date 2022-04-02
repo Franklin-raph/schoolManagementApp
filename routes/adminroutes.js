@@ -134,13 +134,13 @@ router.get('/adminOTP', (req, res) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'frankTestGmail@gmail.com',
-          pass: process.env.TEST_GMAIL_PASSWORD
+          user: 'franklinchinedu61@gmail.com',
+          pass: 'franklinchinedu@7'
         }
       });
       
       const mailOptions = {
-        from: 'frankTestGmail@gmail.com',
+        from: 'franklinchinedu61@gmail.com',
         to: 'igboekwulusifranklin@gmail.com',
         subject: 'Sending Email From Express App',
         html: `<h1>Your code is: <br />${generatedCode}</h1>`,

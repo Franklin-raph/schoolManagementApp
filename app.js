@@ -8,14 +8,15 @@ const passport =        require('passport')
 const methodOveride =   require('method-override')
 const app =             express()
 const bp =              require('body-parser')
+const dotenv =          require('dotenv').config()
 
 // require the passport config file
 require('./config/passport')(passport)
 
 // Port declaration
-const port = process.env.PORT || 4000
+const port = process.env.PORT
 
-mongoose.connect('mongodb://localhost/school-dev')
+mongoose.connect(process.env.MONGO_URI)
     .then(() =>{
     // App listening at port 5000
     app.listen(port, () =>{
