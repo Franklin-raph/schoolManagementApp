@@ -52,26 +52,14 @@ app.set('view engine', 'ejs')
 app.use('/admin', adminRoutes)
 
 // index route
-// app.get('frankschoolmanagementsystem.herokuapp.com/', (req, res) => {
-//     res.render('index')
-// })
+app.get('/', (req, res) => {
+    res.render('index')
+})
 
 // about route
 app.get('/about', (req, res) => {
     res.render('about')
 })
-
-
-
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('public'))
-
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'views', 'index.ejs'))
-    })
-}
-
-
 
 
 // Port declaration
