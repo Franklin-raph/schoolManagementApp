@@ -15,6 +15,7 @@ const path =            require('path')
 require('./config/passport')(passport)
 
 // middle-wares
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(morgan('tiny'))
 app.use(bp.json())
