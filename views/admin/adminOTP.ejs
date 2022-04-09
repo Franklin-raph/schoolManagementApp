@@ -18,7 +18,8 @@ integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLAS
         </div>
     <form method="POST" action="/admin/adminOTP">
         <div class="form-group">
-            <label class="mt-3">OTP</label>
+            <p>OTP Code is <%= generatedCode %></p>
+            <label class="mt-1">OTP</label>
             <input type="number" name="OTP" placeholder="******" class="form-control" id="" required>
 
             <input type="submit" class="form-control btn-dark mt-3" id="submit_btn"  value="Submit">
